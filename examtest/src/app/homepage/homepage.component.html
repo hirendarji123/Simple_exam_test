@@ -1,0 +1,27 @@
+
+<br/>
+<div>
+    <label>
+      
+        <p> {{questioNO}} .{{question}}   </p>
+    </label>
+    <br/>
+
+    <div *ngFor="let user of getquestionArr">
+        <input type="radio" value="{{user}}" (change)="onItemChange($event.target.value)" name="x">{{user}}<br/>
+    </div>  
+    <br/><br/>
+    <button class="btn-primary"  (click)="previous()">previous</button>
+    <button class="btn-primary" (click)="save()">save & next</button>
+    <button class="btn-primary" (click)="submitTEst()">submit</button>
+
+    <button class="btn-primary" (click)="next()">next</button>
+    
+</div>
+<br/>
+<div>
+    <div   *ngFor="let user of questionlist">
+        <button style="float: left;"  (click)="questionNO(user)">{{user}}</button>
+    </div>
+<div>
+

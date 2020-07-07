@@ -1,0 +1,33 @@
+<div class="container">
+
+
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>User name</th>
+                <th>User Email</th>
+                <th>Username</th>
+                <th>password</th>
+                <th>Delete</th>
+                
+        
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of showdata">
+        
+
+                <td>{{item.name}}</td>
+                <td>{{item.email}}</td>
+                <td>{{item.username}}</td>
+                <td>{{item.password}}</td>
+                
+                <td ><button class="btn btn-primary" (click)="delete1(item.username)">Delete</button></td>
+                
+    
+            </tr>
+    
+        </tbody>
+        
+    </table>
+</div>

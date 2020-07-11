@@ -1,0 +1,31 @@
+<div class="container">
+
+
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Question</th>
+                <th>QuestionNO</th>
+               
+                <th>Delete</th>
+                
+        
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of showdata">
+        
+
+                <td>{{item.Question}}</td>
+                <td>{{item.QuestionNO}}</td>
+                
+                
+                <td ><button class="btn btn-primary" (click)="delete1(item.QuestionNO)">Delete</button></td>
+                
+    
+            </tr>
+    
+        </tbody>
+        
+    </table>
+</div>

@@ -8,12 +8,12 @@
     <br/>
 
     <div *ngFor="let user of getquestionArr">
-        <input type="radio" value="{{user}}" (change)="onItemChange($event.target.value)" name="x">{{user}}<br/>
+        <input type="radio"  (change)="onItemChange($event.target.value)" value="{{user}}" name="x">{{user}}<br/>
     </div>  
     <br/><br/>
     <button class="btn-primary"  (click)="previous()">previous</button>
     <button class="btn-primary" (click)="save()">save & next</button>
-    <button class="btn-primary" (click)="submitTEst()">submit</button>
+    <button class="btn-primary" (click)="submitTEst()">submit</button>  
 
     <button class="btn-primary" (click)="next()">next</button>
     

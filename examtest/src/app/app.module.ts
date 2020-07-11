@@ -19,6 +19,7 @@ import { AdminworkComponent } from './adminwork/adminwork.component';
 import { CreatestudentComponent } from './createstudent/createstudent.component';
 import { DeletestudentComponent } from './deletestudent/deletestudent.component';
 import { ShowuserComponent } from './showuser/showuser.component';
+import { ShowQuestionComponent } from './show-question/show-question.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,6 +41,8 @@ import { ShowuserComponent } from './showuser/showuser.component';
     DeletestudentComponent,
     
     ShowuserComponent,
+    
+    ShowQuestionComponent,
 
   ],
   imports: [

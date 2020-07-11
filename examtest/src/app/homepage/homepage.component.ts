@@ -23,7 +23,7 @@ export class HomepageComponent implements OnInit {
   obj={};
   questionlist=[];
   selectedQuestion=1;
-  finalanswersheet={1: "volansys", 2: "ahmedabad", 3: "inter", 4: "5000", 5: "B.E"}
+  finalanswersheet;
   showprevious;
 
   constructor(private  q:QuestionService,private router:Router) 
@@ -49,7 +49,9 @@ export class HomepageComponent implements OnInit {
 
     this.q.getQuestion().subscribe(res=>{
       
-      this.showdata=res as Data[];
+      console.log(res['answer'][0]['answer']); 
+      this.finalanswersheet =res['answer'];
+      this.showdata=res['qiestionlist'] as Data[];
       this.lastquestion=this.showdata.length;
       for (let i = 0; i < this.lastquestion; i++) {
         let x=i;
@@ -109,7 +111,11 @@ submitTEst()
   let result=0;
   for(let i in this.obj)
   {
-    if(this.obj[i]==this.finalanswersheet[i])
+   
+    let x= parseInt(i);
+    x--;
+  
+    if(this.obj[i]==this.finalanswersheet[x]['answer'])
     {
       result++;
       

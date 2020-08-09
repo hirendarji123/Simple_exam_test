@@ -1,20 +1,45 @@
 <form  #f="ngForm">
-     <h3>eneter a questionquestion</h3> 
-    <input type="text" name="Question" ngModel required>
-    <br/>     
-    <h3>eneter a questionquestion NO:-</h3> 
-    <input type="text"  name="QuestionNO"  ngModel required>
+     <h3>Eneter a Questionquestion</h3> 
+    <input type="text"  name="Question" ngModel  #Question="ngModel" required>
+    
+    <br/>
+    <div *ngIf="Question.touched && !Question.valid">
+        <div class="text-danger" *ngIf="Question.errors.required">Question is required.</div>
+    </div>     
+    <h3>Eneter a Questionquestion NO:-</h3> 
+    <input type="number" minlength="1" maxlength="2" #QuestionNO="ngModel"  name="QuestionNO"  ngModel required>
+    <div *ngIf="QuestionNO.touched && !QuestionNO.valid">
+        <div class="text-danger" *ngIf="QuestionNO.errors.required">First Name is required.</div>
+        <div class="text-danger" *ngIf="QuestionNO.errors.minlength">First Name is minimum {{ QuestionNO.errors.minlength.requiredLength }} character.</div>
+        <div  class="text-danger" *ngIf="QuestionNO.errors.maxlength">First Name is maximum 10 character.</div>
+    </div>
     <br/>    
+   
 
     <br/>
-    <h3>enter option  </h3>
-    option A:-<input type="text"   name="option1" ngModel  required><br/>
-    option B:-<input type="text" name="option2" ngModel required><br/>
-    option C:-<input type="text" name="option3" ngModel required><br/>
-    option D:-<input type="text"  name="option4" ngModel required><br/>
+    <h3>Enter Option  </h3>
+    Option A:-<input type="text" #option1="ngModel"  name="option1" ngModel  required><br/>
+    <div *ngIf="option1.touched && !option1.valid">
+        <div class="text-danger" *ngIf="option1.errors.required">option1 is required.</div>
+    </div>
+    Option B:-<input type="text" #option2="ngModel" name="option2" ngModel required><br/>
+    <div *ngIf="option2.touched && !option2.valid">
+        <div class="text-danger" *ngIf="option2.errors.required">option2 is required.</div>
+    </div>
+    Option C:-<input type="text" #option3="ngModel" name="option3" ngModel required><br/>
+    <div *ngIf="option3.touched && !option3.valid">
+        <div class="text-danger" *ngIf="option3.errors.required">option3 is required.</div>
+    </div>
+    Option D:-<input type="text" #option4="ngModel" name="option4" ngModel required><br/>
+    <div *ngIf="option4.touched && !option4.valid">
+        <div class="text-danger" *ngIf="option1.errors.required">option3 is required.</div>
+    </div>
 
-    Answer:-<input type="text"  name="Answer" ngModel required><br/>
+    Answer:-<input type="text" #Answer="ngModel"  name="Answer" ngModel required><br/>
     
+    <div *ngIf="Answer.touched && !Answer.valid">
+        <div class="text-danger" *ngIf="Answer.errors.required">option3 is required.</div>
+    </div>
 
-    <button (click)="submit(f)">add</button>
+    <button [disabled]="!f.valid" (click)="submit(f)" class="btn-primary" >add</button>
 </form>

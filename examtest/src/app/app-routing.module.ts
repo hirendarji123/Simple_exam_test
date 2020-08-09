@@ -11,20 +11,24 @@ import { CreatestudentComponent } from './createstudent/createstudent.component'
 import { DeletestudentComponent } from './deletestudent/deletestudent.component';
 import { ShowuserComponent } from './showuser/showuser.component';
 import { ShowQuestionComponent } from './show-question/show-question.component';
+import {StuentauthGuard as authgaurd} from'./stuentauth.guard';
+import {AdminauthGuard as admin} from './adminauth.guard';
+import { from } from 'rxjs';
+
 
 
 const routes: Routes = [
   {path:'', redirectTo:'firstpage',pathMatch:'full'}
   ,
   {
-    path:'homepage' ,component:HomepageComponent
+    path:'homepage' ,component:HomepageComponent,canActivate:[authgaurd]
   },
   {
-    path:'addquestion',component:AddquestionComponent
+    path:'addquestion',component:AddquestionComponent,canActivate:[admin]
   }
   ,
   {
-    path:'delete',component:DeleteQuestionComponent
+    path:'delete',component:DeleteQuestionComponent,canActivate:[admin]
   }
   ,
   {
@@ -39,21 +43,21 @@ const routes: Routes = [
     path:'adminlogin',component:AdminloginComponent
   },
   {
-    path:'adminwork',component:AdminworkComponent
+    path:'adminwork',component:AdminworkComponent,canActivate:[admin]
   }
   ,
   {
-    path:'createStudent',component:CreatestudentComponent
+    path:'createStudent',component:CreatestudentComponent,canActivate:[admin]
   },
   {
-    path:'deleteStudent',component:DeletestudentComponent
+    path:'deleteStudent',component:DeletestudentComponent,canActivate:[admin]
   }
   ,
   {
-    path:'showstudent',component:ShowuserComponent
+    path:'showstudent',component:ShowuserComponent,canActivate:[admin]
   },
   {
-    path:'showQuestion',component:ShowQuestionComponent
+    path:'showQuestion',component:ShowQuestionComponent,canActivate:[admin]
   }
 ];
 

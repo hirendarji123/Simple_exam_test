@@ -21,6 +21,7 @@ export class LoginComponent implements OnInit {
         password : new FormControl('')
       });
     }
+    
 
     onsubmit()
     {
@@ -36,8 +37,10 @@ export class LoginComponent implements OnInit {
               if(res[0]['username'] == username && res[0]['password'] == password)
               {
                 console.log("right user both are correct id and password");
-              this.router.navigate(['/homepage']);
               
+             
+              this.router.navigate(['homepage']);
+              localStorage.setItem('studentallow','true')
               }
               else
               {
@@ -49,4 +52,6 @@ export class LoginComponent implements OnInit {
           });
 
     }
+
+    
 }

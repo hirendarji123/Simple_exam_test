@@ -10,7 +10,9 @@ import { Observable, Subject } from 'rxjs';
 export class QuestionService {
 
   baseURL = 'http://localhost:3000/';
-  baseURLOfUser = 'http://localhost:3000/student/'; 
+  baseURLOfUser = 'http://localhost:3000/student/';
+  
+
   
 
   selectedquestion;
@@ -87,6 +89,12 @@ deleteStudent(username)
   return this.http.delete(this.baseURLOfUser+username);
 }
 
+baseURLOfUseremail = 'http://localhost:3000/student/emails/';
+getemail(email)
+{ 
 
+  return this.http.get(this.baseURLOfUseremail+email);
+  console.log("hii "+"hello")
+}
 
 }

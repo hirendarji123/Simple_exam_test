@@ -4,7 +4,7 @@ var ObjectId = require('mongoose').Types.ObjectId;
 
 var { Question } = require('../models/question');
 var {Answer} =require('.././models/answekey');
-var _ = require('lodash');
+var _= require('lodash');
 
 
 
@@ -71,7 +71,7 @@ router.post('/', (req, res) => {
 
         if(_.isEmpty(result))
         {
-            console.log("no rsult found");
+            console.log("add question"+QuestionNO);
             var emp = new Question({
 
                 Question: req.body.Question,
@@ -99,7 +99,35 @@ router.post('/', (req, res) => {
         }   
         else
         {
+            
             console.log("QuestioNO is avaliable");
+            console.log(result[0]['_id']);
+            
+            
+            Question.findOneAndUpdate({_id:result[0]['_id'] }, {$set: {Question: req.body.Question,
+                QuestionNO: req.body.QuestionNO,
+                option1: req.body.option1,
+                option2: req.body.option2,
+                option3: req.body.option3,
+                option4: req.body.option4}}, {new: true}, (err, doc) => {
+                if (err) {
+                    console.log("Something wrong when updating data!");
+                }
+                console.log(req.body.QuestionNO);
+                Answer.updateOne({QuestioNO:req.body.QuestionNO},{$set:{
+                    QuestionNO: req.body.QuestionNO,
+                    answer:req.body.Answer}},{new:true},(err,doc)=>
+                {
+                    if(!err)
+
+                    {
+                        console.log("update answerkey");
+                    }
+
+                });
+                console.log("update sucessfully");
+            });
+            
         }
     });
 

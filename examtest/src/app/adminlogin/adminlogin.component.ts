@@ -30,6 +30,7 @@ export class AdminloginComponent implements OnInit {
 
         if("hiren" == username && 123 == password)
             {
+              localStorage.setItem('adminallow','true');
               this.router.navigate(['adminwork'])
             }
     }

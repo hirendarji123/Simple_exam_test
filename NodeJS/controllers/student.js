@@ -1,6 +1,7 @@
 const express = require('express');
 var router = express.Router();
 var ObjectId = require('mongoose').Types.ObjectId;
+var _= require('lodash');
 
 var { Studnet } = require('../models/student');
 
@@ -10,25 +11,59 @@ router.get('/all',(req,res)=>
     Studnet.find((err, docs) => {
         if (!err)
          { 
-        res.send(docs);
+        res.send(docs); 
      }
     });
 })
+
+router.get('/emails/:email', (req, res) => {
+  
+    console.log("in email")
+    console.log(req.params.email);
+    
+    Studnet.find({email:req.params.email }, function(err, result) 
+    {   
+        if(_.isEmpty(result))
+        {
+            console.log("no user avalible in email")
+            res.send({ "email":"no"});
+        }
+        else if(result !== null)
+        {
+            
+            res.send(result);
+        }
+        else
+            {   
+         console.log("not found");
+            res.send({user:no});                                                                                                                              
+        }
+    }); 
+
+});
+
+
+
 // --------------------get data with usernname-------------------------
 router.get('/:username', (req, res) => {
     var username =req.params.username;
     console.log(username);
     Studnet.find({username:username }, function(err, result) 
     {   
-        if(result !== null)
+        if(_.isEmpty(result))
+        {
+            console.log("no user avalible")
+            res.send({ "name":"no avaliavle"});
+        }
+        else if(result !== null)
         {
             
             res.send(result);
-        }
+        }   
         else
         {   
          console.log("not found");
-            res.send([]);
+            res.send({name:no});                                                                                                                              
         }
     }); 
 
@@ -87,6 +122,8 @@ router.delete('/:username', (req, res) => {
         if (!err) { res.send(doc); } else { console.log('Error in User Delete :' + JSON.stringify(err, undefined, 2)); }
     });
 });
+
+//-----------------------get email---------------------------
 
 
 module.exports = router;

@@ -124,7 +124,8 @@ submitTEst()
  
   
   alert("your result"+result);
-  this.router.navigate(['login'])
+  localStorage.setItem('studentallow','false');
+  this.router.navigate(['login']);
   
 }
 
@@ -163,5 +164,10 @@ questionNO(x)
   this.q.getQuestionByNO(x);
 }
 
+logout()
+{
+  localStorage.setItem('studentallow','false');
+  this.router.navigate(['login']);
+}
 
 }

@@ -28,7 +28,7 @@ export class AdminloginComponent implements OnInit {
         var username = this.forms.get('username').value;
         var password = this.forms.get('password').value;
 
-        if("hiren" == username && 123 == password)
+        if("test@test.com" == username && 'test@test' == password)
             {
               localStorage.setItem('adminallow','true');
               this.router.navigate(['adminwork'])
